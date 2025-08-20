@@ -48,6 +48,8 @@ These results show that the pretrained model performs well without fine-tuning.
 
 ## 4. Troubleshooting
 **Issue:** Prompt design can cause **bias or misclassification** (e.g., sarcastic tweets misclassified as positive).  
+“I initially got errors with the Hugging Face evaluate library, so I switched to scikit-learn.
+
 **Solution:**  
 - Use few-shot prompts with diverse examples.  
 - If resources allow, fine-tune the model on airline specific tweets for domain adaptation.  
