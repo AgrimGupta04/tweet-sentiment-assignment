@@ -52,4 +52,36 @@ These results show that the pretrained model performs well without fine-tuning.
 - Use few-shot prompts with diverse examples.  
 - If resources allow, fine-tune the model on airline specific tweets for domain adaptation.  
 
+## Conclusion
 
+In this project, we compared two different approaches to sentiment classification:  
+
+- **DistilBERT (fine tuned specialist)** – Achieved strong results (~75% accuracy). Since it is specifically fine tuned on sentiment tasks (SST-2 dataset), it consistently provided reliable predictions.  
+
+- **FLAN-T5 (general purpose instruction model)** – Performance was lower (~40% accuracy), as expected. Unlike DistilBERT, FLAN is not fine tuned for sentiment classification. Rather, it is an instruction following model that can fit a large range of NLP tasks with different prompts.  
+
+🔑 **Key Insight:**  
+- DistilBERT is like a **specialist**: very accurate when applied to the exact task it was trained for.  
+- FLAN-T5 is like a **generalist**: it can handle many tasks (Q&A, summarization, reasoning) without fine tuning, but at the cost of lower accuracy on narrow tasks like sentiment classification.  
+
+This comparison highlights a tradeoff in modern NLP:  
+- Use **fine tuned models** when you need the highest accuracy for a specific task.  
+- Use **instruction tuned models** (like FLAN or GPT) when you need flexibility across tasks or don’t have task-specific fine-tuned models available.  
+
+
+## Resource Constraints & Compromises
+
+- **No Fine Tuning:**  
+  Due to limited compute, we did not fine tune models like DistilBERT or FLAN T5 on the tweet dataset. Instead, we directly used pretrained versions. Fine tuning would likely have improved accuracy, especially for FLAN T5.  
+
+- **Small Sample Size for Evaluation:**  
+  Instead of evaluating on the full dataset, we tested on a **smaller subset** (e.g. 200 samples) to reduce runtime and memory usage.  
+
+- **CPU-only Execution:**  
+  Models were run on CPU instead of GPU, which made generation slower and limited experimentation with larger models.  
+
+- **Limited Model Choice:**  
+  We used **DistilBERT (sentiment finetuned)** and **FLAN-T5-small**. Larger models (e.g., BERT-large, FLAN-T5-large) could give better accuracy but were too heavy for local execution.  
+
+- **Prompt-Based Evaluation Only:**  
+  For FLAN-T5, we relied solely on **prompt engineering** instead of training. This limited performance since the model is not specialized for sentiment classification.  
