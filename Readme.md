@@ -60,7 +60,7 @@ In this project, we compared two different approaches to sentiment classificatio
 
 - **FLAN-T5 (general purpose instruction model)** – Performance was lower (~40% accuracy), as expected. Unlike DistilBERT, FLAN is not fine tuned for sentiment classification. Rather, it is an instruction following model that can fit a large range of NLP tasks with different prompts.  
 
-🔑 **Key Insight:**  
+**Key Insight:**  
 - DistilBERT is like a **specialist**: very accurate when applied to the exact task it was trained for.  
 - FLAN-T5 is like a **generalist**: it can handle many tasks (Q&A, summarization, reasoning) without fine tuning, but at the cost of lower accuracy on narrow tasks like sentiment classification.  
 
